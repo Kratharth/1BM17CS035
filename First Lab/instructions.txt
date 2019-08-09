@@ -1,0 +1,60 @@
+1 . Executing a python file methods:
+
+	a. Through Command Line : 
+
+		1. Type 'python' in command line.
+		2. Enter the code one line after the other to obtain a single line result.
+
+	b. Through IDE's like spyder , pycharm.
+
+	c. Through editors like Atom:
+
+		1. Enter the code in the editor and save it as a .py file.
+		2. Through the command line , navigate to the folder containing the file.
+		3. Type python <filename> to execute the code.
+
+
+2. Different IDE's and editors in python:
+
+	a. PyCharm
+	b. Spyder
+	c. Thonny
+	d. IDLE
+	e. Atom
+	f. Sublime Text
+	g. VS Code
+
+
+3. Python 2 v/s Python 3 
+
+	a. print function:
+		This is the most well known change. In this the print function in Python 2.x is replaced by print() function in Python 			3.x,i.e, to print in Python 3.x an extra pair of parenthesis is required.
+	
+	b. Unicode:
+		In Python 2, implicit str type is ASCII. But in Python 3.x implicit str type is Unicode.
+
+	c. xrange:
+		xrange() of Python 2.x doesn’t exist in Python 3.x. In Python 2.x, range returns a list i.e. range(3) returns [0, 1, 2] while 			xrange returns a xrange object i. e., xrange(3) returns iterator object which work similar to Java iterator and generates 			number when needed.
+
+	d. Error Handling:
+		There is a small change in error handling in both versions. In python 3.x, ‘as’ keyword is required.
+
+	e. _future_module:
+		This is basically not a difference between two version, but useful thing to mention here. The idea of __future__ module is to 			help in migration. We can use Python 3.x
+		If we are planning Python 3.x support in our 2.x code,we can use_future_ imports it in our code.
+
+4. Python Uses 
+
+	a. Web Development :
+
+		1. Django
+		2. Pyramid
+		3. Flask
+		4. Bottle
+	b. SciPy is a collection of packages for mathematics, science, and engineering.
+	c. Pandas is a data analysis and modeling library.
+	d. IPython is a powerful interactive shell that features easy editing and recording of a work session, and supports visualizations and 		   parallel computing.
+	e. SCons for build control.
+    	f. Buildbot and Apache Gump for automated continuous compilation and testing.
+    	g. Roundup or Trac for bug tracking and project management.
+	h. numPy is a collection of packages for mathematics, science, and engineering. Data Scientist use this tool for analysis.
