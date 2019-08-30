@@ -9,5 +9,6 @@ def reverse(s):
 		l[i] = l[i][::-1]
 	for word in l:
 		print(word, end=" ")
-st = input('enter a string')
+	print('\n')
+st = input('enter a string :')
 reverse(st)
