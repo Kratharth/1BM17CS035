@@ -1,0 +1,33 @@
+class validity:
+	def __init__(self):
+		self.string = ''
+	def assign_string(self,string1):
+		self.string = string1
+	def check_validity(self):
+		lis1 = []
+		flag = 0
+		for char in self.string:
+			if char == '[' :
+				lis1.append(char)
+				lis1.append(']')
+			elif char == '{' :
+				lis1.append(char)
+				lis1.append('}')
+			elif char == '(' :
+				lis1.append(char)
+				lis1.append(')')
+			elif char == ')' or char == '}' or char == ']':
+				if lis1.pop() == char:
+					lis1.pop()
+				else:
+					print('The brackets are in incorrect order')
+					flag = 1
+					break
+		if(flag == 0):
+			print('String is valid')
+if __name__ == '__main__':
+	string = input('enter the bracket string').strip()
+	val = validity()
+	val.assign_string(string)
+	val.check_validity()
+		
