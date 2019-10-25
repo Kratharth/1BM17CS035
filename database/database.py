@@ -1,0 +1,89 @@
+import sqlite3
+
+class Table :
+	
+	def __init__(self):
+		try:
+			self.conn = sqlite3.connect("employee.db")
+		except:
+			pass
+		self.cursor = self.conn.cursor()
+		self.cursor.execute("create table if not exists employee(name varchar(20),emp_id varchar(4),salary int(6));")
+
+	# inserting employee data into empty table
+	def insertEmployees(self):
+		number = int(input('enter the number of employees'))
+		for i in range(number):
+			print('enter the details of employee '+str(i+1))
+			name = input('Enter the name :')
+			id1 = input('Enter the employee id:')
+			salary = int(input('enter the salary:'))
+			self.cursor.execute('insert into employee values(?,?,?);',(name,id1,salary))
+			self.conn.commit()
+
+	#display employee details
+
+	def showEmployees(self):
+		print('The employee details are :')
+		print('Name :'.ljust(20)+'Employee id :'.ljust(20)+'Salary :'.ljust(20))
+		self.conn.row_factory = sqlite3.Row
+		self.cursor.execute('Select * from employee')
+		all_rows = self.cursor.fetchall()
+		for row in all_rows:
+			print(row[0].ljust(20)+row[1].ljust(20)+str(row[2]))
+
+	# display information of a specific employee
+	
+	def showSpecific(self):
+		emp_id = input('enter the id of the employee which you want to display :')
+		self.cursor.execute("select * from employee where emp_id = '%s';" %(emp_id))
+		rows = self.cursor.fetchall()
+		for row in rows:
+			print("Name : " + row[0]+"ID : " +row[1]+"Salary : "+str(row[2]))
+		self.conn.commit()
+
+	# deleting the info of an employee	
+	
+	def deleteParticular(self):
+		emp_id = input('enter the id of the employee to delete :')
+		self.cursor.execute("delete from employee where emp_id = '%s';"%(emp_id))
+		print('Deleted')
+		self.conn.commit()
+
+	# updating the information of a particular employee	
+	
+	def updateParticular(self):
+		emp_id = input('enter the id of the employee of for which you want the details to be modified :')
+		self.cursor.execute("update employee set salary = 7000 where emp_id = '%s';"%(emp_id))
+		print('Updated status')
+		self.conn.commit()
+
+
+if __name__== "__main__":
+
+	table = Table()
+	table.insertEmployees()
+	choice = 1
+	while(choice):
+		print("""enter 1 to enter new employee information 
+		2 to delete an employee  
+		3 to update an employee 
+		4 to show specific employee details
+		5 to show all employee details""")
+		val = int(input('Your choice :'))
+		if val == 1:
+			table.insertEmployees()
+			table.showEmployees()
+		elif val == 2:
+			table.deleteParticular()
+			table.showEmployees()
+		elif val == 3 :
+			table.updateParticular()
+			table.showEmployees()
+		elif val == 4 :
+			table.showSpecific()
+		elif val == 5:
+			table.showEmployees()
+		choice = int(input('Do you want to continue(1/0) :'))
+
+
